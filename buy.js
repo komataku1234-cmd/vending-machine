@@ -1,4 +1,4 @@
-//npm install prompt-sync ターミナルでこれを入力してインストールする
+//npm install prompt-sync ターミナルでこれを入力してインストールする.  
 
 const merchandise = [
   ["水", 100],
