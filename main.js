@@ -4,9 +4,18 @@ const box = document.querySelector('.box');
 let money = 0;
 
 const menus = {
-    mizu: 100,
-    otya: 150,
-    kora: 200
+    mizu: {
+        price: 100,
+        stock: 3
+    },
+    otya: {
+        price: 150,
+        stock: 2
+    },
+    kora: {
+        price: 200,
+        stock: 1
+    }
 };
 
 updateMoney();
@@ -23,20 +32,31 @@ Object.keys(menus).forEach(name => {
 
 function buy(name) {
 
-    const price = menus[name];
+    const item = menus[name];
 
-    if (money >= price) {
+    // 在庫チェック
+    if (item.stock <= 0) {
 
-        money -= price;
+        console.log(`${name}は売り切れです`);
+        return;
+
+    }
+
+    // お金チェック
+    if (money >= item.price) {
+
+        money -= item.price;
+        item.stock--;
 
         console.log(`${name}を購入`);
         console.log(`残高：${money}`);
+        console.log(`在庫：${item.stock}`);
 
         updateMoney();
 
     } else {
 
-        console.log(`${price - money}円足りなくて買えない`);
+        console.log(`${item.price - money}円足りなくて買えない`);
 
     }
 }
