@@ -60,7 +60,6 @@ function buy(name) {
         updateMoney();
         
         result.push(name);
-        console.log(result);
 
     } else {
 
@@ -97,8 +96,6 @@ function createCoinSpawner(id, image, value) {
     originalCoin.addEventListener('mousedown', e => {
 
         const coin = createCoin(image, value);
-
-        moveCoin(coin, e);
 
         function move(event) {
             moveCoin(coin, event);
