@@ -1,7 +1,9 @@
 const moneyText = document.querySelector('#money');
 const box = document.querySelector('.box');
+const cancel = document.querySelector(`#cancel`);
 
 let money = 0;
+let result = []
 
 const menus = {
     mizu: {
@@ -20,6 +22,9 @@ const menus = {
 
 updateMoney();
 
+cancel.addEventListener('click', () => {
+    cancel1();
+});
 
 // ====================
 // 飲み物ボタン
@@ -53,12 +58,24 @@ function buy(name) {
         console.log(`在庫：${item.stock}`);
 
         updateMoney();
+        
+        result.push(name);
+        console.log(result);
 
     } else {
 
         console.log(`${item.price - money}円足りなくて買えない`);
 
     }
+}
+
+
+function cancel1(){
+    console.log(`${result.at(-1)}を返金します`);
+    money+= menus[result.at(-1)].price;
+    result.pop();
+    console.log(result);
+    updateMoney();
 }
 
 
