@@ -72,6 +72,7 @@ function buy(name) {
 function cancel1(){
     console.log(`${result.at(-1)}を返金します`);
     money+= menus[result.at(-1)].price;
+    menus[result.at(-1)].stock += 1;
     result.pop();
     console.log(result);
     updateMoney();
