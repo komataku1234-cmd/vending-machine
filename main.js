@@ -1,9 +1,8 @@
 const moneyText = document.querySelector('#money');
 const box = document.querySelector('.box');
-const cancel = document.querySelector(`#cancel`);
+const oturibtn = document.querySelector(`#oturi`);
 
 let money = 0;
-let result = []
 
 const menus = {
     mizu: {
@@ -22,8 +21,8 @@ const menus = {
 
 updateMoney();
 
-cancel.addEventListener('click', () => {
-    cancel1();
+oturibtn.addEventListener('click', () => {
+    oturi();
 });
 
 // ====================
@@ -59,7 +58,6 @@ function buy(name) {
 
         updateMoney();
         
-        result.push(name);
 
     } else {
 
@@ -69,12 +67,9 @@ function buy(name) {
 }
 
 
-function cancel1(){
-    console.log(`${result.at(-1)}を返金します`);
-    money+= menus[result.at(-1)].price;
-    menus[result.at(-1)].stock += 1;
-    result.pop();
-    console.log(result);
+function oturi(){
+    console.log(`${money}円を返金します`);
+    money = 0;
     updateMoney();
 }
 
